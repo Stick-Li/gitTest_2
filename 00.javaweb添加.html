@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./lib/jquery.js"></script>
+</head>
+
+<body>
+    <script>
+        $(function () {
+            $.ajax({
+                method: 'POST',
+                url: 'http://127.0.0.1/bgd/page/myCurrentPageBookAdd',
+                data: {
+                    bookname:'a',
+                    bookISBN:'a',
+                    bookAuthor:'a',
+                    bookPrice:'a',
+                    bookPress:'a',
+                },
+                success: (res) => {
+                    console.log(res)
+                    if(res.status===200){
+                        alert('添加成功！')
+                    }else{
+                        alert('添加失败！商品已存在，不用再次录入。')
+                    }
+                }
+            })
+        });
+    </script>
+</body>
+
+</html>

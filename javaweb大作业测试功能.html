@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>tab切换</title>
+    <link rel="stylesheet" href="./lib/bootstrap.css">
+    <script src="./lib/jquery.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+        crossorigin="anonymous"></script>
+    <style>
+        .jumbotron {
+            padding: 0 30px;
+        }
+
+        body {
+            margin: 25px;
+        }
+
+        .input-group .form-control {
+            width: 20%;
+        }
+
+        .find {
+            margin: 20px 0;
+        }
+
+        .findbtn {
+            margin: 0 0 0 5px;
+        }
+
+        .panel {
+            margin: 20px 0;
+        }
+
+        .count {
+            float: right;
+        }
+
+        .form-inline .input-group {
+            width: 18.5%;
+        }
+
+        .table-bordered {
+            margin: 20px 0;
+        }
+
+        .dropdown-toggle {
+            /* width: 18.5%; */
+        }
+    </style>
+
+<body>
+
+    <nav aria-label="Page navigation">
+        <ul class="pagination" id="page">
+            <li>
+                <a href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <!-- <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li> -->
+            <li>
+                <a href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+          <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">图书操作</h3>
+        </div>
+        <div class="panel-body form-inline">
+
+            <div class="input-group">
+                <div class="input-group-addon">条形码编号</div>
+                <input type="text" class="form-control" id="iptISBN" placeholder="请输入条形码">
+            </div>
+
+            <div class="input-group">
+                <div class="input-group-addon">商品名</div>
+                <input type="text" class="form-control" id="iptBookname" placeholder="请输入商品名">
+            </div>
+
+            <div class="input-group">
+                <div class="input-group-addon">净含量</div>
+                <input type="text" class="form-control" id="iptAuthor" placeholder="请输入净含量">
+            </div>
+
+            <div class="input-group">
+                <div class="input-group-addon">价格</div>
+                <input type="text" class="form-control" id="iptPrice" placeholder="请输入价格">
+            </div>
+
+            <div class="input-group">
+                <div class="input-group-addon">品类</div>
+                <!-- <input type="text" class="form-control" id="iptPress" placeholder="请输入品类"> -->
+                <!-- <div class="dropdown">
+                    <button class="btn dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">主题
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                        <li role="presentation">
+                            <a>Java</a>
+                        </li>
+                        <li role=" presentation">
+                            <a>数据挖掘</a>
+                        </li>
+                        <li role="presentation">
+                            <a>数据通信/网络</a>
+                        </li>
+                    </ul>
+                </div> -->
+
+                <select class="form-control">
+                    <option>冷饮类</option>
+                    <option>零食类</option>
+                    <option>熟食类</option>
+                    <option>水果蔬菜类</option>
+                    <option>调味品类</option>
+                    <option>粮食和粮食制品</option>
+                </select>
+            </div>
+
+            <button id="btnAdd" class="btn btn-primary">添加</button>
+        </div>
+    </div>
+
+    <script>
+
+        // window.onload = () => {
+            let totalPages = 10;     //总页数
+            let currentPage = 10;    //当前页数
+
+            var pageUl = document.getElementById('page')
+            var pageLis = pageUl.getElementsByTagName('li')
+            console.log(pageLis)
+            let nowActive
+            for (let i = 0; i < totalPages; i++) {
+                const newElement = document.createElement('li');
+                if (currentPage === i + 1) {
+                    newElement.setAttribute('class', 'active')
+                }
+                newElement.innerHTML = `<a href="#">${i + 1}</a>`
+
+                newElement.onclick = () => {
+                    nowActive = i + 1
+                    console.log(i + 1)
+                    for(let j = 0; j < totalPages; j++){
+                        pageLis[j+1].setAttribute('class', '')
+                    }
+                    newElement.setAttribute('class', 'active')
+                    console.log('崩溃',pageLis)
+                }
+
+                pageUl.insertBefore(newElement, pageLis[i].nextSibling)
+            }
+        // }
+
+        // var lis = document.getElementsByTagName('li')
+        // var btn = document.getElementById('dropdownMenu1')
+        // for (let i = 0; i < lis.length; i++) {
+        //     lis[i].onclick = () => {
+        //         console.log(lis[i].innerText)
+        //         btn.innerHTML = `${lis[i].innerText} <span class="caret"></span>`
+        //     }
+        // }
+        // btn.innerText = 123
+        // console.log(btn.innerHTML)
+        // $(function () {
+
+        //     $('a').on('click',function(){
+        //         // $("a").text('Show');
+        //         // $('#dropdownMenu1').text() = $(this).html()
+        //         console.log($('#dropdownMenu1').text())
+        //         var s = $(this).html()
+        //         var newHtml = `${s}<span class="caret"></span>`
+        //         ('#dropdownMenu1').text() = newHtml
+        //         console.log($(this).html())
+        //     })
+        // });
+    </script>
+</body>
+</head>
+
+
+
+</html>

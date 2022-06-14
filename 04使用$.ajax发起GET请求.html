@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./lib/jquery.js"></script>
+    <link rel="stylesheet" href="./lib/bootstrap.css">
+    <style>
+        /* .panel {
+            margin: 20px auto;
+            width: 23%;
+        }
+
+        .inform {
+            margin: 5px 0;
+        }
+
+        .btn-primary {
+            margin: 10px 0 0;
+            float: right;
+        } */
+    </style>
+</head>
+
+<body>
+    <div>
+
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist" id="top_column">
+            <li role="presentation" class="active">
+                <a href="#home">总览</a>
+            </li>
+            <li role="presentation" class="">
+                <a href="#profile">查询</a>
+            </li>
+            <li role="presentation" class="">
+                <a href="#messages">添加</a>
+            </li>
+            <li role="presentation" class="">
+                <a href="#settings">Settings</a>
+            </li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content" id="bottom_column">
+            <div role="tabpanel" class="tab-pane active" id="home">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>版号</th>
+                            <th>书名</th>
+                            <th>作者</th>
+                            <th>价格</th>
+                            <th>出版社</th>
+                            <th>操作（暂无）</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tb">
+                        <!-- <tr>
+                        <td></td>
+                    </tr> -->
+                    </tbody>
+                </table>
+
+            </div>
+            <div role="tabpanel" class="tab-pane" id="profile">.profile..</div>
+            <div role="tabpanel" class="tab-pane" id="messages">.messages..</div>
+            <div role="tabpanel" class="tab-pane" id="settings">..settings.</div>
+        </div>
+
+    </div>
+
+    <button id="get">发起GET请求</button>
+    <button id="post">发起POST请求</button>
+    <h1>5秒后自动跳转</h1>
+    <script>
+        let top_column = document.getElementById('top_column').getElementsByTagName('li')
+        let bottom_column = document.getElementById('bottom_column').getElementsByClassName('tab-pane')
+        window.onload = function () {
+            for (let i = 0; i < top_column.length; i++) {
+                top_column[i].onclick = () => {
+                    tab_content(i);
+                }
+            }
+        }
+        function tab_content(i) {
+            for (let j = 0; j < bottom_column.length; j++) {
+                top_column[j].className = ""
+                bottom_column[j].className = "tab-pane";
+            }
+            top_column[i].className = "active"
+            bottom_column[i].className = "tab-pane active";
+        }
+    </script>
+    <!-- <script>
+        for (let i = 1; i <= 5; i++) {
+            console.log(i)
+            setTimeout(() => {
+                console.log('settimeout', i)
+                document.querySelector('h1').innerHTML = `${5 - i}秒后自动跳转`
+                if (i == 5) {
+                    console.log('此时跳转')
+                }
+            }, 1000 * i);
+        }
+    </script> -->
+    <script>
+        $(function () {
+            $('#get').on('click', () => {
+                $.ajax({
+                    method: 'GET',
+                    url: "http://www.liulongbin.top:3006/api/get",
+                    data: {
+                        name: 'bilibili',
+                        age: 19,
+                    },
+                    success: function (res) {
+                        console.log(res)
+                    }
+                })
+            })
+
+            $('#post').on('click', () => {
+                $.ajax({
+                    method: 'POST',
+                    url: "http://www.liulongbin.top:3006/api/post",
+                    data: {
+                        name: 'bilibili',
+                        age: 19,
+                    },
+                    success: function (res) {
+                        console.log(res)
+                    }
+                })
+            })
+        });
+    </script>
+</body>
+
+</html>

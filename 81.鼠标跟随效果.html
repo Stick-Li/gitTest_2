@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./lib/jquery.js"></script>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        #gif {
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="./assets/loading.gif" id="gif">
+    <script>
+        $(function () {
+            // 1.获取到图片
+            var gif = $('#gif')
+            // 4-1 定义节流阀
+            var timer = null
+            // 2.绑定 mousemove 事件
+            $(document).on('mousemove', function (e) {
+                // console.log(e.pageX, e.pageY)    // 拿到鼠标此刻的位置
+                // 4-3 判断节流阀是否为空（不为空则结束
+                if (timer) return
+
+                // 4-2 开启延时器
+                timer = setTimeout(() => {
+                    $(gif).css('left', e.pageX).css('top', e.pageY)
+                    console.log('ok')
+                    timer = null
+                }, 28);
+            })
+        });
+    </script>
+</body>
+
+</html>

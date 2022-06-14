@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./lib/jquery.js"></script>
+</head>
+
+<body>
+    <form action="/login" id="f1">
+        <input type="text" name="username" id="">
+        <input type="password" name="password" id="">
+        <button type="submit">提交</button>
+    </form>
+</body>
+<script>
+    // // 方法一：
+    // $(function () {
+    //     // 只要点击确定就会触发函数
+    //     $('#f1').submit((e) => {
+    //         alert('监听到了表单的提交')
+    //         e.preventDefault()
+    //     })
+    // });
+
+    // 方法二
+    $(function () {
+        // 只要点击确定就会触发函数
+        $('#f1').on('submit', (e) => {
+            alert('监听到了表单的提交2')
+            e.preventDefault()
+        })
+    });
+</script>
+
+</html>

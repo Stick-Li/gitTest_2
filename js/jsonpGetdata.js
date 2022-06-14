@@ -1,0 +1,1 @@
+abc({ name: 'ginger', age: 19 });

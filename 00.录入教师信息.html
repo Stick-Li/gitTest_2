@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./lib/bootstrap.css">
+    <script src="./lib/jquery.js"></script>
+    <script src="./js/00.录入教师信息.js"></script>
+    <style>
+        body{
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <button id="btnGET">点击获取服务端数据</button>
+    <button id="btnGETinfo">点击获取服务端数据</button>
+    <button id="btnPOSTinfo">点击获取数据库数据</button>
+    <button id="btnPOSTComment">点击获取评论</button> -->
+
+
+    <!-- 录入面板 -->
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">录入教师信息</h3>
+        </div>
+        <form class="panel-body" id="formAddInfo">
+            <div>教师工号：</div>
+            <input type="text" class="form-control" name="id">
+            <div>教师姓名：</div>
+            <input type="text" class="form-control" name="name">
+            <div>教师手机号：</div>
+            <input type="text" class="form-control" name="phone">
+            
+            <button type="submit" class="btn btn-primary">录入</button>
+        </form>
+    </div>
+
+    <!-- 信息列表 -->
+
+    <!-- <ul class="list-group" id="infoList">
+        <li class="list-group-item">
+            <span class="badge" style="background-color: #F0AD4E;">评论时间</span>
+            Item 1
+        </li>
+    </ul> -->
+    
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>工号</th>
+                <th>姓名</th>
+                <th>电话号码</th>
+            </tr>
+        </thead>
+        <tbody id="infoList">
+            <tr>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    
+
+
+
+    <script>
+        // $(function () {
+        //     $('#btnGET').on('click', () => {
+        //         $.get('http://127.0.0.1:8080/user', (res) => {
+        //             console.log(res)
+        //         })
+        //     })
+        //     $('#btnGETinfo').on('click', { id: 1 }, () => {
+        //         $.post('http://127.0.0.1:8080/user', (res) => {
+        //             console.log(res)
+        //         })
+        //     })
+        //     $('#btnPOSTinfo').on('click', { id: 1 }, () => {
+        //         $.post('http://127.0.0.1:8080/getinfo', (res) => {
+        //             console.log(res)
+        //         })
+        //     })
+
+        //     $('#btnPOSTComment').on('click', { id: 1 }, () => {
+        //         $.post('http://127.0.0.1:8080/getcomment', (res) => {
+        //             console.log(res)
+        //         })
+        //     })
+        // });
+    </script>
+</body>
+
+</html>
